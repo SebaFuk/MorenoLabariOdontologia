@@ -6,7 +6,7 @@ const WHATSAPP_NUMBER = "5493413667500";
 const SEDES = {
   rosario: {
     label: "Rosario",
-    address: "Blvd. Oroño 168 bis, Rosario, Santa Fe",
+    address: "Blvd. Oroño 174bis, Rosario, Santa Fe",
     phone: "+5493413667500",
     phone_display: "341 366-7500",
   },
@@ -65,7 +65,7 @@ async function copyText(text) {
 function buildMessage(sedeKey) {
   const sede = SEDES[sedeKey] || SEDES.rosario;
   return encodeURIComponent(
-    `Hola! Quiero pedir un turno en Labari Odontología. Sede: ${sede.label}. ¿Me pasan disponibilidad?`
+    `Hola! Quiero pedir un turno en Moreno Labari Odontología. Sede: ${sede.label}. ¿Me pasan disponibilidad?`
   );
 }
 
