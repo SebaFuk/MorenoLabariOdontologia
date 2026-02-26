@@ -1,20 +1,20 @@
 // WhatsApp
 // Cambiá este número por el real (formato internacional, sin +, sin espacios).
 // Ejemplo Rosario: 54 9 341 ...
-const WHATSAPP_NUMBER = "5493413667500";
+const WHATSAPP_NUMBER = "5493412562123";
 
 const SEDES = {
   rosario: {
     label: "Rosario",
     address: "Blvd. Oroño 174bis, Rosario, Santa Fe",
-    phone: "+5493413667500",
-    phone_display: "341 366-7500",
+    phone: "+5493412562123",
+    phone_display: "341 256-2123",
   },
   vgg: {
     label: "Villa Gobernador Gálvez",
     address: "Alberdi 2313, Villa Gobernador Gálvez, Santa Fe",
-    phone: "+5493413667500",
-    phone_display: "341 366-7500",
+    phone: "+5493413592140",
+    phone_display: "341 359-2140",
   },
 };
 
@@ -110,8 +110,10 @@ function applyCallLinks() {
 
 
 function buildWaLink(sedeKey) {
+  const sede = SEDES[sedeKey] || SEDES.rosario;
+  const number = sede.phone.replace('+', '');
   const msg = buildMessage(sedeKey);
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  return `https://wa.me/${number}?text=${msg}`;
 }
 
 function applyWhatsAppLinks() {
@@ -170,6 +172,8 @@ function setSede(sedeKey) {
   applyWhatsAppLinks();
   // Update all Call links
   applyCallLinks();
+  // Sync drawer sede buttons
+  if (window._syncDrawerSede) window._syncDrawerSede(sedeKey);
 }
 
 function wireTabs(containerId) {
@@ -199,4 +203,113 @@ document.addEventListener("DOMContentLoaded", () => {
   // Año en footer
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
+});
+
+/* ── Scroll Reveal ─────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  /* Topbar scroll shadow */
+  const topbar = document.querySelector('.topbar');
+  window.addEventListener('scroll', () => {
+    topbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+});
+
+/* ── Mobile Drawer ─────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger   = document.getElementById('hamburgerBtn');
+  const drawer      = document.getElementById('mobileDrawer');
+  const overlay     = document.getElementById('drawerOverlay');
+  const drawerLinks = document.querySelectorAll('.drawerLink');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburger) hamburger.addEventListener('click', () => {
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  // Cerrar al tocar un link del menú
+  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+  // Sede buttons dentro del drawer
+  const drawerSedeBtns = document.querySelectorAll('.drawerSedeBtn');
+  drawerSedeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sedeKey = btn.getAttribute('data-sede');
+      setSede(sedeKey);
+      // Sync visual active state
+      drawerSedeBtns.forEach(b => b.classList.toggle('active', b === btn));
+    });
+  });
+
+  // Sync drawer sede buttons when sede changes from elsewhere
+  const origSetSede = setSede;
+  window._syncDrawerSede = (sedeKey) => {
+    drawerSedeBtns.forEach(b =>
+      b.classList.toggle('active', b.getAttribute('data-sede') === sedeKey)
+    );
+  };
+});
+
+/* ── Drawer close button + hide WA float ─────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const closeBtn = document.getElementById('drawerCloseBtn');
+  const waFloat  = document.getElementById('waFloat');
+  const drawer   = document.getElementById('mobileDrawer');
+
+  // Close button inside drawer
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      // reuse closeDrawer from the other listener
+      const overlay   = document.getElementById('drawerOverlay');
+      const hamburger = document.getElementById('hamburgerBtn');
+      drawer.classList.remove('open');
+      overlay && overlay.classList.remove('open');
+      hamburger && hamburger.classList.remove('open');
+      hamburger && hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      waFloat && waFloat.classList.remove('drawerOpen');
+    });
+  }
+
+  // Watch drawer open/close to toggle WA float
+  const observer = new MutationObserver(() => {
+    if (drawer.classList.contains('open')) {
+      waFloat && waFloat.classList.add('drawerOpen');
+    } else {
+      waFloat && waFloat.classList.remove('drawerOpen');
+    }
+  });
+  if (drawer) observer.observe(drawer, { attributes: true, attributeFilter: ['class'] });
 });

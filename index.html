@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moreno Labari Odontología | Rosario</title>
   <meta name="description" content="Moreno Labari Odontología en Rosario y Villa Gobernador Gálvez. Turnos por WhatsApp. Atención integral con Dra. Moreno y Dr. Labari." />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="theme-color" content="#070d1a" />
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
@@ -14,11 +14,20 @@
 </head>
 
 <body>
+
+  <!-- Animated background -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-orb bg-orb-4"></div>
+  <div class="bg-scan"></div>
+
+
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="container nav">
       <div class="brand">
-         <img class="logoImg" src="img/LabariOdontologia.png" alt="Moreno Labari Odontología" />
+        <img class="logoImg" src="img/logo_new.png" alt="Moreno Labari Odontología" />
         <div>
           <div class="brandName">Moreno Labari Odontología</div>
           <div class="brandSub">Rosario y Villa G. Gálvez · Turnos por WhatsApp</div>
@@ -36,7 +45,6 @@
         <a href="#contacto">Contacto</a>
       </nav>
 
-
       <div class="sedePicker">
         <span class="sedeLabel">Sede</span>
         <select id="sedeSelect" class="sedeSelect" aria-label="Elegir sede">
@@ -45,30 +53,79 @@
         </select>
       </div>
 
-      <div class="navCtas">
+      <!-- Desktop CTAs -->
+      <div class="navCtas desktopOnly">
         <a class="btn" id="callTop" data-call href="#">Llamar</a>
         <a class="btn primary" id="waTop" data-wa href="#">WhatsApp</a>
       </div>
+
+      <!-- Mobile: hamburger -->
+      <button class="hamburger mobileOnly" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobileDrawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawerInner">
+
+      <!-- Drawer header -->
+      <div class="drawerHeader">
+        <div class="drawerBrand">
+          <img src="img/LabariOdontologia.png" class="drawerLogo" alt="Logo" />
+          <span class="drawerBrandName">Moreno Labari</span>
+        </div>
+        <button class="drawerClose" id="drawerCloseBtn" aria-label="Cerrar menú">✕</button>
+      </div>
+
+      <!-- Sede switcher -->
+      <div class="drawerSede">
+        <div class="drawerSedeLabel">🏙 Elegí tu sede</div>
+        <div class="drawerSedeBtns">
+          <button class="drawerSedeBtn active" data-sede="rosario" id="drawerSedeRosario">Rosario</button>
+          <button class="drawerSedeBtn" data-sede="vgg" id="drawerSedeVgg">Villa G. Gálvez</button>
+        </div>
+      </div>
+
+      <!-- Nav links -->
+      <nav class="drawerNav">
+        <a class="drawerLink" href="#sedes">Sedes</a>
+        <a class="drawerLink" href="#servicios">Servicios</a>
+        <a class="drawerLink" href="#obras">Obras sociales</a>
+        <a class="drawerLink" href="#equipo">Equipo</a>
+        <a class="drawerLink" href="#turnos">Turnos</a>
+        <a class="drawerLink" href="#faq">FAQ</a>
+        <a class="drawerLink" href="#trabajos">Antes y después</a>
+        <a class="drawerLink" href="#contacto">Contacto</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="drawerCtas">
+        <a class="btn" id="drawerCall" data-call href="#">Llamar</a>
+        <a class="btn primary" id="drawerWa" data-wa href="#">WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+  <!-- Overlay -->
+  <div class="drawerOverlay" id="drawerOverlay"></div>
 
   <main class="container">
 
     <!-- HERO -->
     <section class="hero" id="inicio">
-      <div class="heroCard">
-        <span class="pill">🦷 Odontología · Rosario y Villa G. Gálvez</span>
-        <h1>Odontología clara, profesional y sin vueltas.</h1>
+      <div class="heroCard reveal">
+        <span class="pill">🦷 Rosario y Villa G. Gálvez</span>
+        <h1>Tu sonrisa en las<br>mejores manos.</h1>
         <p class="lead">
-          Diagnóstico entendible, plan por etapas y seguimiento.
-          Turnos y consultas por WhatsApp.
+          Diagnóstico claro, plan de tratamiento por etapas y seguimiento personalizado.
+          Turnos y consultas directamente por WhatsApp.
         </p>
-
         <div class="heroCtas">
           <a class="btn primary" id="waHero" data-wa href="#">Pedir turno por WhatsApp</a>
           <a class="btn" href="#sedes">Ver sedes</a>
         </div>
-
         <div class="stats">
           <div class="stat">
             <strong>Diagnóstico claro</strong>
@@ -79,26 +136,30 @@
             <span>Prevención, estética y rehabilitación.</span>
           </div>
           <div class="stat">
-            <strong>Turnos por WhatsApp</strong>
-            <span>Respuesta rápida y directa.</span>
+            <strong>Respuesta rápida</strong>
+            <span>Turnos directos por WhatsApp.</span>
           </div>
         </div>
       </div>
 
-      <aside class="sideCard">
+      <aside class="sideCard reveal delay-2">
         <h3>Info rápida</h3>
         <div class="kv">
           <div>
             <div class="k">Horario</div>
-            <div class="v">09:00–19:00</div>
+            <div class="v">09:00 – 19:00 hs</div>
           </div>
           <div>
             <div class="k">Ubicación</div>
-            <div class="v" id="quickAddress">Blvd. Oroño 174bis, Rosario, Santa Fe</div>
+            <div class="v" id="quickAddress">Blvd. Oroño 174bis, Rosario</div>
           </div>
           <div>
             <div class="k">Turnos</div>
-            <div class="v">WhatsApp</div>
+            <div class="v">Por WhatsApp</div>
+          </div>
+          <div>
+            <div class="k">Atención</div>
+            <div class="v">Lunes a Viernes</div>
           </div>
         </div>
         <div class="sideLogoBottom">
@@ -107,441 +168,480 @@
       </aside>
     </section>
 
-
-
-<!-- SEDES -->
-<section class="section" id="sedes">
-  <h2>Sedes</h2>
-  <p class="muted">Elegí la sede para ver dirección y enviar el mensaje de WhatsApp con la sede correcta.</p>
-
-  <div class="tabs" id="sedeTabs" role="tablist" aria-label="Sedes">
-    <button class="tab active" type="button" data-sede="rosario" role="tab" aria-selected="true">Rosario</button>
-    <button class="tab" type="button" data-sede="vgg" role="tab" aria-selected="false">Villa Gobernador Gálvez</button>
-  </div>
-
-  <!-- ROSARIO -->
-  <div class="sedePanel active" data-sede="rosario" role="tabpanel">
-    <div class="branchGrid">
-      <div class="branchPhoto">
-        <img src="img/consultorio.jpg" alt="Sede Rosario - Moreno Labari Odontología" />
+    <!-- SEDES -->
+    <section class="section" id="sedes">
+      <div class="reveal">
+        <span class="section-eyebrow">Dónde encontrarnos</span>
+        <h2>Nuestras sedes</h2>
+        <p class="muted">Elegí la sede para ver dirección y pedir tu turno con un clic.</p>
       </div>
 
-      <div class="branchInfo card">
-        <span class="pill">Sede · Rosario</span>
-        <h3 class="branchTitle">Rosario</h3>
-        <p class="muted">📍 Blvd. Oroño 174bis, Rosario, Santa Fe</p>
+      <div class="tabs reveal delay-1" id="sedeTabs" role="tablist" aria-label="Sedes">
+        <button class="tab active" type="button" data-sede="rosario" role="tab" aria-selected="true">Rosario</button>
+        <button class="tab" type="button" data-sede="vgg" role="tab" aria-selected="false">Villa Gobernador Gálvez</button>
+      </div>
 
-        <div class="row" style="margin-top:12px;">
-          <a class="btn primary" data-wa data-sede-wa="rosario" href="#">Pedir turno por WhatsApp</a>
-          <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Crdd99mCYcxBNBht7">Cómo llegar</a>
-        </div>
-
-        <div class="miniNote" style="margin-top:14px;">
-          <strong>Galería (Rosario)</strong>
-          <div class="gallery2">
-            <figure class="galleryItem">
-              <img src="img/consultorio.jpg" alt="Sede Rosario - exterior" loading="lazy" />
-              <figcaption>Exterior</figcaption>
-            </figure>
-            <figure class="galleryItem">
-              <img src="img/rosario-interior-1.jpg" alt="Sede Rosario - consultorio" loading="lazy" />
-              <figcaption>Consultorio</figcaption>
-            </figure>
-            <figure class="galleryItem">
-              <img src="img/rosario-interior-2.jpg" alt="Sede Rosario - área de trabajo" loading="lazy" />
-              <figcaption>Área de trabajo</figcaption>
-            </figure>
+      <!-- ROSARIO -->
+      <div class="sedePanel active" data-sede="rosario" role="tabpanel">
+        <div class="branchGrid">
+          <div class="branchPhoto reveal-left">
+            <img src="img/consultorio.jpg" alt="Sede Rosario - Moreno Labari Odontología" />
+          </div>
+          <div class="branchInfo card reveal-right">
+            <span class="pill">Sede · Rosario</span>
+            <h3 class="branchTitle">Rosario</h3>
+            <p class="muted">📍 Blvd. Oroño 174bis, Rosario, Santa Fe</p>
+            <div class="row">
+              <a class="btn primary" data-wa data-sede-wa="rosario" href="#">Pedir turno por WhatsApp</a>
+              <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Crdd99mCYcxBNBht7">Cómo llegar</a>
+            </div>
+            <div class="miniNote" style="margin-top:16px;">
+              <strong>Galería</strong>
+              <div class="gallery2">
+                <figure class="galleryItem">
+                  <img src="img/consultorio.jpg" alt="Sede Rosario - exterior" loading="lazy" />
+                  <figcaption>Exterior</figcaption>
+                </figure>
+                <figure class="galleryItem">
+                  <img src="img/rosario-interior-1.jpg" alt="Sede Rosario - consultorio" loading="lazy" />
+                  <figcaption>Consultorio</figcaption>
+                </figure>
+                <figure class="galleryItem">
+                  <img src="img/rosario-interior-2.jpg" alt="Sede Rosario - área de trabajo" loading="lazy" />
+                  <figcaption>Área de trabajo</figcaption>
+                </figure>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- VILLA GOBERNADOR GÁLVEZ -->
-  <div class="sedePanel" data-sede="vgg" role="tabpanel">
-    <div class="branchGrid">
-      <div class="branchPhoto">
-        <img src="img/vgg-exterior.jpg" alt="Sede Villa Gobernador Gálvez - exterior" />
-      </div>
-
-      <div class="branchInfo card">
-        <span class="pill">Sede · Villa Gobernador Gálvez</span>
-        <h3 class="branchTitle">Villa Gobernador Gálvez</h3>
-        <p class="muted">📍 Alberdi 2313, Villa Gobernador Gálvez, Santa Fe</p>
-
-        <div class="row" style="margin-top:12px;">
-          <a class="btn primary" data-wa data-sede-wa="vgg" href="#">Pedir turno por WhatsApp</a>
-          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Alberdi+2313,+Villa+Gobernador+Gálvez,+Santa+Fe">Cómo llegar</a>
-        </div>
-
-        <div class="miniNote" style="margin-top:14px;">
-          <strong>Galería (V. G. Gálvez)</strong>
-          <div class="gallery2">
-            <figure class="galleryItem">
-              <img src="img/vgg-exterior.jpg" alt="Sede V. G. Gálvez - exterior" loading="lazy" />
-              <figcaption>Exterior</figcaption>
-            </figure>
-            <figure class="galleryItem">
-              <img src="img/vgg-interior-1.jpg" alt="Sede V. G. Gálvez - interior" loading="lazy" />
-              <figcaption>Interior</figcaption>
-            </figure>
-            <figure class="galleryItem">
-              <img src="img/vgg-interior-2.jpg" alt="Sede V. G. Gálvez - interior 2" loading="lazy" />
-              <figcaption>Consultorio</figcaption>
-            </figure>
+      <!-- VILLA GOBERNADOR GÁLVEZ -->
+      <div class="sedePanel" data-sede="vgg" role="tabpanel">
+        <div class="branchGrid">
+          <div class="branchPhoto reveal-left">
+            <img src="img/vgg-exterior.jpg" alt="Sede Villa Gobernador Gálvez - exterior" />
+          </div>
+          <div class="branchInfo card reveal-right">
+            <span class="pill">Sede · Villa Gobernador Gálvez</span>
+            <h3 class="branchTitle">Villa Gobernador Gálvez</h3>
+            <p class="muted">📍 Alberdi 2313, Villa Gobernador Gálvez, Santa Fe</p>
+            <div class="row">
+              <a class="btn primary" data-wa data-sede-wa="vgg" href="#">Pedir turno por WhatsApp</a>
+              <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Alberdi+2313,+Villa+Gobernador+Gálvez,+Santa+Fe">Cómo llegar</a>
+            </div>
+            <div class="miniNote" style="margin-top:16px;">
+              <strong>Galería</strong>
+              <div class="gallery2">
+                <figure class="galleryItem">
+                  <img src="img/vgg-exterior.jpg" alt="Sede V. G. Gálvez - exterior" loading="lazy" />
+                  <figcaption>Exterior</figcaption>
+                </figure>
+                <figure class="galleryItem">
+                  <img src="img/vgg-interior-1.jpg" alt="Sede V. G. Gálvez - interior" loading="lazy" />
+                  <figcaption>Interior</figcaption>
+                </figure>
+                <figure class="galleryItem">
+                  <img src="img/vgg-interior-2.jpg" alt="Sede V. G. Gálvez - interior 2" loading="lazy" />
+                  <figcaption>Consultorio</figcaption>
+                </figure>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-    
+    </section>
 
     <!-- SERVICIOS -->
     <section class="section" id="servicios">
-      <h2>Servicios</h2>
-      <p class="muted">Base general.</p>
+      <div class="reveal">
+        <span class="section-eyebrow">Lo que hacemos</span>
+        <h2>Servicios</h2>
+        <p class="muted">Atención odontológica integral con tecnología y trato personalizado.</p>
+      </div>
 
       <div class="grid">
-        <article class="card"><h4>Consulta y diagnóstico</h4><p>Evaluación y plan de tratamiento.</p></article>
-        <article class="card"><h4>Limpieza y prevención</h4><p>Control, higiene y cuidado de encías.</p></article>
-        <article class="card"><h4>Estética dental</h4><p>Blanqueamiento y armonización de sonrisa.</p></article>
-        <article class="card"><h4>Endodoncia</h4><p>Tratamiento de conducto.</p></article>
-        <article class="card"><h4>Ortodoncia</h4><p>Evaluación y corrección de mordida.</p></article>
-        <article class="card"><h4>Implantes</h4><p>Planificación y rehabilitación.</p></article>
-        <article class="card"><h4>Rehabilitación</h4><p>Coronas, puentes, restauraciones.</p></article>
-        <article class="card"><h4>Urgencias</h4><p>Dolor / fractura / infección (según disponibilidad).</p></article>
-        <article class="card"><h4>Encías (Periodoncia)</h4><p>Salud periodontal y mantenimiento.</p></article>
+        <article class="serviceCard reveal delay-1">
+          <div class="serviceIcon">🔍</div>
+          <h4>Consulta y diagnóstico</h4>
+          <p>Evaluación completa y plan de tratamiento personalizado con opciones claras.</p>
+        </article>
+        <article class="serviceCard reveal delay-2">
+          <div class="serviceIcon">✨</div>
+          <h4>Limpieza y prevención</h4>
+          <p>Control, higiene profesional y cuidado de encías.</p>
+        </article>
+        <article class="serviceCard reveal delay-3">
+          <div class="serviceIcon">😁</div>
+          <h4>Estética dental</h4>
+          <p>Blanqueamiento y armonización de sonrisa.</p>
+        </article>
+        <article class="serviceCard reveal delay-1">
+          <div class="serviceIcon">🦷</div>
+          <h4>Endodoncia</h4>
+          <p>Tratamiento de conducto con técnicas modernas y sin dolor.</p>
+        </article>
+        <article class="serviceCard reveal delay-2">
+          <div class="serviceIcon">📐</div>
+          <h4>Ortodoncia</h4>
+          <p>Evaluación y corrección de mordida con planificación integral.</p>
+        </article>
+        <article class="serviceCard reveal delay-3">
+          <div class="serviceIcon">🔩</div>
+          <h4>Implantes</h4>
+          <p>Planificación y rehabilitación con implantes dentales.</p>
+        </article>
+        <article class="serviceCard reveal delay-1">
+          <div class="serviceIcon">👑</div>
+          <h4>Rehabilitación</h4>
+          <p>Coronas, puentes y restauraciones estéticas en zirconio.</p>
+        </article>
+        <article class="serviceCard reveal delay-2">
+          <div class="serviceIcon">🚨</div>
+          <h4>Urgencias</h4>
+          <p>Atención de dolor, fractura e infección según disponibilidad.</p>
+        </article>
+        <article class="serviceCard reveal delay-3">
+          <div class="serviceIcon">💪</div>
+          <h4>Encías (Periodoncia)</h4>
+          <p>Salud periodontal y mantenimiento de tejidos de soporte.</p>
+        </article>
       </div>
     </section>
 
     <!-- OBRAS SOCIALES -->
-<section class="section" id="obras">
-  <h2>Obras sociales</h2>
-  <p class="muted">Consultanos por cobertura y condiciones según el tratamiento.</p>
+    <section class="section" id="obras">
+      <div class="reveal">
+        <span class="section-eyebrow">Cobertura</span>
+        <h2>Obras sociales</h2>
+        <p class="muted">Consultanos por cobertura y condiciones según el tratamiento.</p>
+      </div>
 
-  <div class="card">
-    <ul class="chipList" aria-label="Obras sociales disponibles">
-      <li class="chip">PARTICULAR</li>
-      <li class="chip">IAPOS</li>
-      <li class="chip">SANCOR</li>
-      <li class="chip">BRITANICA SALUD</li>
-      <li class="chip">CIENCIAS ECONOMICAS</li>
-      <li class="chip">PRIMERO – CAJA FORENSE</li>
-      <li class="chip">MEDICUS</li>
-      <li class="chip">SWISS MEDICAL</li>
-      <li class="chip">JERARQUICO SALUD</li>
-      <li class="chip">AVALIAN</li>
-      <li class="chip">FEDERADA SALUD</li>
-      <li class="chip">+SALUD</li>
-      <li class="chip">DASUTTEN</li>
-      <li class="chip">BASSI</li>
-      <li class="chip">CAJA DE INGENIERO</li>
-      <li class="chip">OSAM</li>
-      <li class="chip">OCEARA</li>
-      <li class="chip">OSCOEMA</li>
-      <li class="chip">OSSEM</li>
-      <li class="chip">OSPAC</li>
-      <li class="chip">OSPA</li>
-      <li class="chip">OSPA VIAL</li>
-      <li class="chip">OSPIN</li>
-      <li class="chip">PODER JUDICIAL</li>
-      <li class="chip">Y OTRAS...</li>
-    </ul>
-  </div>
-</section>
+      <div class="card reveal delay-1">
+        <ul class="chipList" aria-label="Obras sociales disponibles">
+          <li class="chip">PARTICULAR</li>
+          <li class="chip">IAPOS</li>
+          <li class="chip">SANCOR</li>
+          <li class="chip">BRITÁNICA SALUD</li>
+          <li class="chip">CIENCIAS ECONÓMICAS</li>
+          <li class="chip">PRIMERO – CAJA FORENSE</li>
+          <li class="chip">MEDICUS</li>
+          <li class="chip">SWISS MEDICAL</li>
+          <li class="chip">JERÁRQUICO SALUD</li>
+          <li class="chip">AVALIAN</li>
+          <li class="chip">FEDERADA SALUD</li>
+          <li class="chip">+SALUD</li>
+          <li class="chip">DASUTTEN</li>
+          <li class="chip">BASSI</li>
+          <li class="chip">CAJA DE INGENIEROS</li>
+          <li class="chip">OSAM</li>
+          <li class="chip">OCEARA</li>
+          <li class="chip">OSCOEMA</li>
+          <li class="chip">OSSEM</li>
+          <li class="chip">OSPAC</li>
+          <li class="chip">OSPA</li>
+          <li class="chip">OSPA VIAL</li>
+          <li class="chip">OSPIN</li>
+          <li class="chip">PODER JUDICIAL</li>
+          <li class="chip">Y OTRAS...</li>
+        </ul>
+      </div>
+    </section>
 
     <!-- EQUIPO -->
     <section class="section" id="equipo">
-      <h2>Equipo</h2>
-      <p class="muted">Dos profesionales, atención personalizada.</p>
+      <div class="reveal">
+        <span class="section-eyebrow">Quiénes somos</span>
+        <h2>Nuestro equipo</h2>
+        <p class="muted">Dos profesionales comprometidos con tu salud bucal.</p>
+      </div>
 
       <div class="two">
-        <div class="profile card">
-          <div class="avatar">
-  <img src="img/moreno.jpg" alt="Dra. Moreno" class="avatarImg">
-</div>
-          <div>
-            <h4>Dra. Moreno</h4>
-            <p class="muted">Odontóloga · Matrícula 2461/02</p>
-            <p>Enfoque en prevención, educación y seguimiento del paciente.</p>
+        <div class="profileCard reveal-left">
+          <div class="profile">
+            <div class="avatar">
+              <img src="img/moreno.jpg" alt="Dra. Moreno" class="avatarImg">
+            </div>
+            <div>
+              <h4>Dra. Moreno</h4>
+              <p class="muted">Matrícula 2461/02</p>
+              <p>Enfoque en prevención, educación y seguimiento del paciente.</p>
+            </div>
           </div>
+          <div class="profileBadge">⚕ Odontóloga</div>
         </div>
 
-        <div class="profile card">
-          <div class="avatar">
-  <img src="img/labari.jpg" alt="Dr. Labari" class="avatarImg">
-</div>
-
-          <div>
-            <h4>Dr. Labari</h4>
-            <p class="muted">Odontólogo · Matrícula 2443/02</p>
-            <p>Enfoque en rehabilitación y estética funcional con planificación.</p>
+        <div class="profileCard reveal-right">
+          <div class="profile">
+            <div class="avatar">
+              <img src="img/labari.jpg" alt="Dr. Labari" class="avatarImg">
+            </div>
+            <div>
+              <h4>Dr. Labari</h4>
+              <p class="muted">Matrícula 2443/02</p>
+              <p>Enfoque en rehabilitación y estética funcional con planificación.</p>
+            </div>
           </div>
+          <div class="profileBadge">⚕ Odontólogo</div>
         </div>
       </div>
     </section>
 
     <!-- TURNOS -->
-<section class="section" id="turnos">
-  <h2>Turnos</h2>
-  <p class="muted">Los turnos se coordinan únicamente por WhatsApp. Elegí la sede y te abrimos el chat con el mensaje listo.</p>
+    <section class="section" id="turnos">
+      <div class="reveal">
+        <span class="section-eyebrow">Reservá tu lugar</span>
+        <h2>Turnos</h2>
+        <p class="muted">Los turnos se coordinan por WhatsApp. Elegí la sede y te abrimos el chat listo.</p>
+      </div>
 
-  <div class="card turnosCard">
-    <h3>Solicitar turno</h3>
-    <p class="muted">Incluye sede en el mensaje para agilizar la coordinación.</p>
+      <div class="turnosCard reveal delay-1">
+        <h3>Solicitar turno</h3>
+        <p class="muted">Incluí la sede en el mensaje para agilizar la coordinación.</p>
+        <div class="row">
+          <a class="btn" id="callTurnos" data-call href="#">Llamar</a>
+          <a class="btn primary" data-wa href="#">Abrir WhatsApp</a>
+        </div>
+        <div class="note">
+          <strong>Para responderte más rápido:</strong> nombre + motivo de consulta + días y horarios disponibles.
+        </div>
+      </div>
+    </section>
 
-    <div class="row" style="margin-top:12px;">
-      <a class="btn" id="callTurnos" data-call href="#">Llamar</a>
-      <a class="btn primary" data-wa href="#">Abrir WhatsApp</a>
-    </div>
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="reveal">
+        <span class="section-eyebrow">Dudas frecuentes</span>
+        <h2>Preguntas frecuentes</h2>
+        <p class="muted">Respuestas rápidas para que puedas pedir tu turno sin vueltas.</p>
+      </div>
 
-    <div class="note" style="margin-top:14px;">
-      <strong>Para responderte más rápido:</strong> nombre + motivo de consulta + días/horarios disponibles.
-    </div>
-  </div>
-</section>
+      <div class="faqGrid">
+        <details class="faqItem reveal delay-1" open>
+          <summary>¿Cómo pido un turno?</summary>
+          <div class="faqBody">
+            <p>Los turnos se coordinan por WhatsApp. Elegí la sede (Rosario o Villa Gobernador Gálvez) y tocá "WhatsApp".</p>
+          </div>
+        </details>
+        <details class="faqItem reveal delay-2">
+          <summary>¿Atienden urgencias?</summary>
+          <div class="faqBody">
+            <p>Sí. Si es urgencia, escribinos por WhatsApp indicando qué te duele, desde cuándo y si tomaste medicación.</p>
+          </div>
+        </details>
+        <details class="faqItem reveal delay-3">
+          <summary>¿Trabajan con obras sociales?</summary>
+          <div class="faqBody">
+            <p>Sí, trabajamos con varias obras sociales y también particular. Podés ver el listado completo en la sección "Obras sociales".</p>
+          </div>
+        </details>
+        <details class="faqItem reveal delay-4">
+          <summary>¿Atienden niños?</summary>
+          <div class="faqBody">
+            <p>Sí. Contanos la edad y el motivo de consulta para indicarte el mejor horario.</p>
+          </div>
+        </details>
+        <details class="faqItem reveal delay-5">
+          <summary>¿Qué incluye la primera consulta?</summary>
+          <div class="faqBody">
+            <p>Evaluación clínica, diagnóstico y opciones de tratamiento. Si hace falta, se indican estudios complementarios.</p>
+          </div>
+        </details>
+        <details class="faqItem reveal delay-6">
+          <summary>¿Qué debo enviar por WhatsApp para que me respondan rápido?</summary>
+          <div class="faqBody">
+            <p>Nombre + motivo de consulta + sede + días/horarios disponibles. Con eso te confirmamos disponibilidad.</p>
+          </div>
+        </details>
+        <details class="faqItem reveal">
+          <summary>¿Cuál es el horario de atención?</summary>
+          <div class="faqBody">
+            <p>De lunes a viernes de 09:00 a 19:00. Para confirmar horarios puntuales por sede, escribinos por WhatsApp.</p>
+          </div>
+        </details>
+      </div>
+    </section>
 
-<!-- FAQ -->
-<section class="section" id="faq">
-  <h2>Preguntas frecuentes</h2>
-  <p class="muted">Respuestas rápidas para que puedas pedir tu turno sin vueltas.</p>
+    <!-- ANTES Y DESPUÉS -->
+    <section class="section" id="trabajos">
+      <div class="reveal">
+        <span class="section-eyebrow">Nuestros resultados</span>
+        <h2>Antes y después</h2>
+        <p class="muted">Resultados reales. Cada caso es único y el plan se define tras la evaluación clínica.</p>
+      </div>
 
-  <div class="faqGrid">
-    <details class="faqItem" open>
-      <summary>¿Cómo pido un turno?</summary>
-      <div class="faqBody">
-        <p>Los turnos se coordinan por WhatsApp. Elegí la sede arriba (Rosario o Villa Gobernador Gálvez) y tocá “WhatsApp”.</p>
-      </div>
-    </details>
+      <div class="casesGrid">
+        <article class="card case reveal delay-1">
+          <div class="caseHead">
+            <h3>Férula seccionada</h3>
+            <span class="caseTag">Rehabilitación</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case1_ferula_seccionada_antes.png" alt="Antes - férula seccionada" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case1_ferula_seccionada_despues.png" alt="Después - férula seccionada" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+        </article>
 
-    <details class="faqItem">
-      <summary>¿Atienden urgencias?</summary>
-      <div class="faqBody">
-        <p>Sí. Si es urgencia, escribinos por WhatsApp indicando qué te duele, desde cuándo y si tomaste medicación.</p>
-      </div>
-    </details>
+        <article class="card case reveal delay-2">
+          <div class="caseHead">
+            <h3>Coronas individuales (inferior)</h3>
+            <span class="caseTag">Zirconio</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case2_coronas_zirconio_inf_antes.png" alt="Antes - coronas inferiores" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case2_coronas_zirconio_inf_despues.png" alt="Después - coronas inferiores" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+        </article>
 
-    <details class="faqItem">
-      <summary>¿Trabajan con obras sociales?</summary>
-      <div class="faqBody">
-        <p>Sí, trabajamos con varias obras sociales y también particular. Podés ver el listado completo en la sección “Obras sociales”.</p>
-      </div>
-    </details>
+        <article class="card case reveal delay-1">
+          <div class="caseHead">
+            <h3>Férula inferior</h3>
+            <span class="caseTag">Metalocerámica</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case3_ferula_metaloceramica_inf_antes.png" alt="Antes - férula inferior" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case3_ferula_metaloceramica_inf_despues.png" alt="Después - férula inferior" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+        </article>
 
-    <details class="faqItem">
-      <summary>¿Atienden niños?</summary>
-      <div class="faqBody">
-        <p>Sí. Contanos la edad y el motivo de consulta para indicarte el mejor horario.</p>
-      </div>
-    </details>
+        <article class="card case reveal delay-2">
+          <div class="caseHead">
+            <h3>Rehabilitación maxilar superior</h3>
+            <span class="caseTag">Funcional + estética</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case4_rehab_maxilar_sup_antes.jpg" alt="Antes - rehab maxilar superior" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case4_rehab_maxilar_sup_despues.jpg" alt="Después - rehab maxilar superior" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+          <p class="caseNote muted">Diastema en incisivos y ausencia de premolares.</p>
+        </article>
 
-    <details class="faqItem">
-      <summary>¿Qué incluye la primera consulta?</summary>
-      <div class="faqBody">
-        <p>Evaluación clínica, diagnóstico y opciones de tratamiento. Si hace falta, se indican estudios complementarios.</p>
-      </div>
-    </details>
+        <article class="card case reveal delay-1">
+          <div class="caseHead">
+            <h3>Diseño y maquillaje</h3>
+            <span class="caseTag">Zirconio</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case5_diseno_maquillaje_zirconio_antes.png" alt="Antes - diseño en zirconio" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case5_diseno_maquillaje_zirconio_despues.png" alt="Después - diseño en zirconio" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+        </article>
 
-    <details class="faqItem">
-      <summary>¿Qué debo enviar por WhatsApp para que me respondan rápido?</summary>
-      <div class="faqBody">
-        <p>Nombre + motivo de consulta + sede + días/horarios disponibles. Con eso te confirmamos disponibilidad.</p>
-      </div>
-    </details>
+        <article class="card case reveal delay-2">
+          <div class="caseHead">
+            <h3>Rehabilitación</h3>
+            <span class="caseTag">Zirconio</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case6_rehab_zirconio_antes.jpg" alt="Antes - rehabilitación en zirconio" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case6_rehab_zirconio_despues.jpg" alt="Después - rehabilitación en zirconio" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+        </article>
 
-    <details class="faqItem">
-      <summary>¿Cuál es el horario de atención?</summary>
-      <div class="faqBody">
-        <p>De lunes a viernes de 09:00 a 19:00. Para confirmar horarios puntuales por sede, escribinos por WhatsApp.</p>
+        <article class="card case reveal delay-1">
+          <div class="caseHead">
+            <h3>Limpieza profesional</h3>
+            <span class="caseTag">Higiene</span>
+          </div>
+          <div class="baGrid">
+            <figure class="baItem">
+              <img src="img/trabajos/case7_limpieza_prof_antes.jpg" alt="Antes - limpieza profesional" loading="lazy">
+              <figcaption>Antes</figcaption>
+            </figure>
+            <figure class="baItem">
+              <img src="img/trabajos/case7_limpieza_prof_despues.jpg" alt="Después - limpieza profesional" loading="lazy">
+              <figcaption>Después</figcaption>
+            </figure>
+          </div>
+        </article>
       </div>
-    </details>
-  </div>
-</section>
-
-   <!-- ANTES Y DESPUÉS -->
-<section class="section" id="trabajos">
-  <h2>Antes y después</h2>
-  <p class="muted">Resultados reales. Cada caso es único y el plan de tratamiento se define tras la evaluación clínica.</p>
-
-  <div class="casesGrid">
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Férula seccionada</h3>
-        <span class="caseTag">Rehabilitación</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case1_ferula_seccionada_antes.png" alt="Antes - férula seccionada" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case1_ferula_seccionada_despues.png" alt="Después - férula seccionada" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Coronas individuales (inferior)</h3>
-        <span class="caseTag">Zirconio</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case2_coronas_zirconio_inf_antes.png" alt="Antes - coronas inferiores de zirconio" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case2_coronas_zirconio_inf_despues.png" alt="Después - coronas inferiores de zirconio" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Férula inferior</h3>
-        <span class="caseTag">Metalocerámica</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case3_ferula_metaloceramica_inf_antes.png" alt="Antes - férula inferior metalocerámica" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case3_ferula_metaloceramica_inf_despues.png" alt="Después - férula inferior metalocerámica" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Rehabilitación maxilar superior</h3>
-        <span class="caseTag">Funcional + estética</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case4_rehab_maxilar_sup_antes.jpg" alt="Antes - rehabilitación maxilar superior" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case4_rehab_maxilar_sup_despues.jpg" alt="Después - rehabilitación maxilar superior" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-      <p class="caseNote muted">Diastema en incisivos y ausencia de premolares.</p>
-    </article>
-
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Diseño y maquillaje</h3>
-        <span class="caseTag">Zirconio</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case5_diseno_maquillaje_zirconio_antes.png" alt="Antes - diseño y maquillaje en zirconio" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case5_diseno_maquillaje_zirconio_despues.png" alt="Después - diseño y maquillaje en zirconio" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Rehabilitación</h3>
-        <span class="caseTag">Zirconio</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case6_rehab_zirconio_antes.jpg" alt="Antes - rehabilitación en zirconio" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case6_rehab_zirconio_despues.jpg" alt="Después - rehabilitación en zirconio" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="card case">
-      <div class="caseHead">
-        <h3>Limpieza profesional</h3>
-        <span class="caseTag">Higiene</span>
-      </div>
-      <div class="baGrid">
-        <figure class="baItem">
-          <img src="img/trabajos/case7_limpieza_prof_antes.jpg" alt="Antes - limpieza profesional" loading="lazy">
-          <figcaption>Antes</figcaption>
-        </figure>
-        <figure class="baItem">
-          <img src="img/trabajos/case7_limpieza_prof_despues.jpg" alt="Después - limpieza profesional" loading="lazy">
-          <figcaption>Después</figcaption>
-        </figure>
-      </div>
-    </article>
-  </div>
-</section>
+    </section>
 
     <!-- CONTACTO -->
-<section class="section" id="contacto">
-  <h2>Contacto</h2>
-
-  <div class="card contactCard">
-    <div class="contactTop">
-      <div>
-        <h3 class="contactTitle">Dirección</h3>
-        <p class="muted contactAddr" data-sede="rosario">📍 Blvd. Oroño 174bis, Rosario, Santa Fe</p>
-        <p class="muted contactAddr" data-sede="vgg" style="display:none;">📍 Alberdi 2313, Villa Gobernador Gálvez, Santa Fe</p>
+    <section class="section" id="contacto">
+      <div class="reveal">
+        <span class="section-eyebrow">Estamos aquí</span>
+        <h2>Contacto</h2>
       </div>
 
-      <div class="contactActions">
-        <div class="tabs small" id="contactTabs" role="tablist" aria-label="Elegir sede (Contacto)">
-          <button class="tab active" type="button" data-sede="rosario" role="tab" aria-selected="true">Rosario</button>
-          <button class="tab" type="button" data-sede="vgg" role="tab" aria-selected="false">V. G. Gálvez</button>
+      <div class="card contactCard reveal delay-1">
+        <div class="contactTop">
+          <div>
+            <h3 class="contactTitle">Dirección</h3>
+            <p class="muted contactAddr" data-sede="rosario">📍 Blvd. Oroño 174bis, Rosario, Santa Fe</p>
+            <p class="muted contactAddr" data-sede="vgg" style="display:none;">📍 Alberdi 2313, Villa Gobernador Gálvez, Santa Fe</p>
+          </div>
+
+          <div class="contactActions">
+            <div class="tabs small" id="contactTabs" role="tablist" aria-label="Elegir sede (Contacto)">
+              <button class="tab active" type="button" data-sede="rosario" role="tab" aria-selected="true">Rosario</button>
+              <button class="tab" type="button" data-sede="vgg" role="tab" aria-selected="false">V. G. Gálvez</button>
+            </div>
+            <div class="row">
+              <a class="btn" id="mapsRosario" data-sede-link="rosario" target="_blank" rel="noopener"
+                 href="https://maps.app.goo.gl/Crdd99mCYcxBNBht7">Cómo llegar</a>
+              <a class="btn" id="mapsVgg" data-sede-link="vgg" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps?q=Alberdi+2313,+Villa+Gobernador+Gálvez,+Santa+Fe"
+                 style="display:none;">Cómo llegar</a>
+              <a class="btn primary" data-wa href="#">WhatsApp</a>
+            </div>
+          </div>
         </div>
 
-        <div class="row" style="margin-top:10px;">
-          <a class="btn" id="mapsRosario" data-sede-link="rosario" target="_blank" rel="noopener"
-             href="https://maps.app.goo.gl/Crdd99mCYcxBNBht7">Cómo llegar</a>
-
-          <a class="btn" id="mapsVgg" data-sede-link="vgg" target="_blank" rel="noopener"
-             href="https://www.google.com/maps?q=Alberdi+2313,+Villa+Gobernador+Gálvez,+Santa+Fe"
-             style="display:none;">Cómo llegar</a>
-
-          <a class="btn primary" data-wa href="#">WhatsApp</a>
+        <div class="mapWrap">
+          <iframe class="mapFrame active" data-sede="rosario"
+            src="https://www.google.com/maps?q=Blvd.+Oro%C3%B1o+174bis,+Rosario,+Santa+Fe&output=embed"
+            width="100%" height="420" style="border:0;"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe class="mapFrame" data-sede="vgg"
+            src="https://www.google.com/maps?q=Alberdi+2313,+Villa+Gobernador+Gálvez,+Santa+Fe&output=embed"
+            width="100%" height="420" style="border:0; display:none;"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-    </div>
-
-    <div class="mapWrap">
-      <iframe class="mapFrame active" data-sede="rosario"
-        src="https://www.google.com/maps?q=Blvd.+Oro%C3%B1o+174bis,+Rosario,+Santa+Fe&output=embed"
-        width="100%" height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-      <iframe class="mapFrame" data-sede="vgg"
-        src="https://www.google.com/maps?q=Alberdi+2313,+Villa+Gobernador+Gálvez,+Santa+Fe&output=embed"
-        width="100%" height="450"
-        style="border:0; display:none;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-</section>
+    </section>
 
     <footer class="footer">
       <div class="muted">
-        © <span id="year"></span> Moreno Labari Odontología · Rosario
+        © <span id="year"></span> Moreno Labari Odontología · Rosario, Santa Fe
       </div>
     </footer>
 
@@ -553,5 +653,73 @@
   </a>
 
   <script src="script.js"></script>
+
+  <script>
+  /* ── Animated background particles ── */
+  (function() {
+    const count = 28;
+    const colors = [
+      'rgba(201,169,110,.55)',
+      'rgba(201,169,110,.35)',
+      'rgba(126,200,227,.4)',
+      'rgba(255,255,255,.2)',
+    ];
+    const sizes = [2, 2.5, 3, 2, 1.5, 2, 3];
+
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'bg-particle';
+      const size = sizes[i % sizes.length];
+      const color = colors[i % colors.length];
+      const left = Math.random() * 100;
+      const duration = 12 + Math.random() * 20;
+      const delay = -(Math.random() * duration);
+      const drift = (Math.random() - 0.5) * 120;
+      const bottom = -(Math.random() * 30);
+
+      p.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${left}%;
+        bottom: ${bottom}%;
+        background: ${color};
+        box-shadow: 0 0 ${size * 3}px ${color};
+        --drift: ${drift}px;
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+      `;
+      document.body.appendChild(p);
+    }
+
+    /* Tooth SVG floating icons — dental aesthetic */
+    const toothSvg = `<svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2C13 2 6 7 6 16c0 5 2 9 3 13 1 5 2 15 4 17 1 1 2 0 3-3 1-4 2-7 4-7s3 3 4 7c1 3 2 4 3 3 2-2 3-12 4-17 1-4 3-8 3-13C34 7 27 2 20 2Z" stroke="rgba(201,169,110,.12)" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>`;
+
+    const toothCount = 6;
+    for (let i = 0; i < toothCount; i++) {
+      const el = document.createElement('div');
+      el.innerHTML = toothSvg;
+      const size = 24 + Math.random() * 32;
+      const left = Math.random() * 95;
+      const duration = 20 + Math.random() * 25;
+      const delay = -(Math.random() * duration);
+      const drift = (Math.random() - 0.5) * 80;
+      el.style.cssText = `
+        position: fixed;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${left}%;
+        bottom: -10%;
+        pointer-events: none;
+        z-index: 0;
+        --drift: ${drift}px;
+        animation: particleRise ${duration}s linear ${delay}s infinite;
+        opacity: 0;
+      `;
+      document.body.appendChild(el);
+    }
+  })();
+  </script>
 </body>
 </html>
