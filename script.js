@@ -6,7 +6,7 @@ const WHATSAPP_NUMBER = "5493412562123";
 const SEDES = {
   rosario: {
     label: "Rosario",
-    address: "Blvd. Oroño 174bis, Rosario, Santa Fe",
+    address: "Blvd. Oroño 168bis, Rosario, Santa Fe",
     phone: "+5493412562123",
     phone_display: "341 256-2123",
   },
