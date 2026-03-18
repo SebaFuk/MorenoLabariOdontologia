@@ -1,8 +1,7 @@
 # robots.txt — Moreno Labari Odontología
-# TODO: Reemplazar morenolabaridental.com.ar por el dominio real
 
 User-agent: *
 Allow: /
 Disallow: /ODONTOFOTOS/
 
-Sitemap: https://morenolabaridental.com.ar/sitemap.xml
+Sitemap: https://odontologiamorenolabari.com.ar/sitemap.xml
