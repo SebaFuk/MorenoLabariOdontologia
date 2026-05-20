@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel · Odontología Moreno Labari</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#FCFAF6" />
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+
+  <!-- Supabase client (UMD) -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+</head>
+<body class="admin-body">
+
+  <!-- ─────────── LOGIN GATE ─────────── -->
+  <div class="login-wrap" id="loginWrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="img/logo_new.webp" alt="Moreno Labari" width="56" height="56" />
+      </div>
+      <div class="login-eyebrow">Panel privado</div>
+      <h1 class="login-title">Acceso al gestor de turnos</h1>
+      <p class="login-sub">Iniciá sesión con tu cuenta de administrador.</p>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="login-row">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" autocomplete="email" required />
+        </div>
+        <div class="login-row">
+          <label for="loginPwd">Contraseña</label>
+          <input type="password" id="loginPwd" autocomplete="current-password" required minlength="6" />
+        </div>
+        <div class="login-error" id="loginError" style="display:none;"></div>
+        <button type="submit" class="btn primary" id="loginBtn" style="width:100%;">Entrar</button>
+      </form>
+
+      <p class="login-tip">Backend: Supabase. Los turnos se sincronizan en tiempo real entre dispositivos.</p>
+    </div>
+  </div>
+
+  <!-- ─────────── ADMIN DASHBOARD ─────────── -->
+  <div class="admin-shell" id="adminShell" style="display:none;">
+
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="admin-brand">
+        <img src="img/logo_new.webp" alt="Moreno Labari" width="40" height="40" />
+        <div>
+          <div class="admin-brand-name">Odontología Moreno Labari</div>
+          <div class="admin-brand-sub">Gestor de turnos</div>
+        </div>
+      </div>
+      <div class="admin-top-actions">
+        <button type="button" class="btn ghost" id="exportCsvBtn">Exportar CSV</button>
+        <button type="button" class="btn primary" id="newTurnoBtn">+ Nuevo turno</button>
+        <button type="button" class="btn ghost" id="logoutBtn" title="Cerrar sesión">Salir</button>
+      </div>
+    </header>
+
+    <!-- Stats row -->
+    <section class="admin-stats">
+      <div class="stat-card"><div class="stat-k">Hoy</div><div class="stat-v" id="statToday">0</div></div>
+      <div class="stat-card"><div class="stat-k">Esta semana</div><div class="stat-v" id="statWeek">0</div></div>
+      <div class="stat-card"><div class="stat-k">Pendientes</div><div class="stat-v" id="statPending">0</div></div>
+      <div class="stat-card"><div class="stat-k">Total</div><div class="stat-v" id="statTotal">0</div></div>
+    </section>
+
+    <!-- Main grid: calendar + list -->
+    <main class="admin-grid">
+
+      <!-- Calendar -->
+      <section class="admin-calendar-wrap card">
+        <div class="cal-header">
+          <button type="button" class="cal-nav" id="calPrev" aria-label="Mes anterior">‹</button>
+          <div class="cal-title" id="calTitle">Mes</div>
+          <button type="button" class="cal-nav" id="calNext" aria-label="Mes siguiente">›</button>
+          <button type="button" class="btn ghost cal-today-btn" id="calToday">Hoy</button>
+        </div>
+        <div class="cal-weekdays">
+          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span class="legend-dot has-turnos"></span> Con turnos
+          <span class="legend-dot today"></span> Hoy
+          <span class="legend-dot selected"></span> Seleccionado
+        </div>
+      </section>
+
+      <!-- List + filters -->
+      <section class="admin-list-wrap card">
+        <div class="list-header">
+          <div>
+            <h2 class="list-title" id="listTitle">Turnos</h2>
+            <p class="list-sub" id="listSub">Todos los turnos próximos</p>
+          </div>
+          <button type="button" class="btn ghost btn-sm" id="clearDateBtn" style="display:none;">Quitar fecha</button>
+        </div>
+
+        <div class="list-filters">
+          <select id="filterStatus">
+            <option value="all">Todos los estados</option>
+            <option value="pending">Pendientes</option>
+            <option value="confirmed">Confirmados</option>
+            <option value="done">Realizados</option>
+            <option value="cancelled">Cancelados</option>
+          </select>
+          <select id="filterSede">
+            <option value="all">Ambas sedes</option>
+            <option value="rosario">Rosario</option>
+            <option value="vgg">V. G. Gálvez</option>
+          </select>
+          <select id="filterSource">
+            <option value="all">Todos los orígenes</option>
+            <option value="online">Online</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telefono">Teléfono</option>
+            <option value="manual">Manual</option>
+          </select>
+          <input type="search" id="filterSearch" placeholder="Buscar nombre/teléfono…" />
+        </div>
+
+        <div class="turno-list" id="turnoList"></div>
+        <div class="turno-empty" id="turnoEmpty" style="display:none;">
+          <div class="empty-icon">📋</div>
+          <p>No hay turnos para mostrar.</p>
+          <button type="button" class="btn primary" id="newTurnoBtnEmpty">+ Cargar primer turno</button>
+        </div>
+      </section>
+
+    </main>
+
+    <p class="admin-footer">
+      Datos sincronizados con Supabase en tiempo real ·
+      <a href="index.html" class="footerLink">Volver al sitio</a>
+    </p>
+
+  </div>
+
+  <!-- ─────────── TURNO MODAL ─────────── -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none;"></div>
+  <div class="modal-wrap" id="turnoModal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Nuevo turno</h3>
+        <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Cerrar">✕</button>
+      </div>
+      <form id="turnoForm" class="modal-body" autocomplete="off">
+        <input type="hidden" id="t-id" />
+
+        <div class="form-row two">
+          <div>
+            <label for="t-nombre">Nombre <span class="req">*</span></label>
+            <input type="text" id="t-nombre" required maxlength="50" autocomplete="given-name" />
+          </div>
+          <div>
+            <label for="t-apellido">Apellido <span class="req">*</span></label>
+            <input type="text" id="t-apellido" required maxlength="50" autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="t-telefono">Teléfono <span class="req">*</span></label>
+            <input type="tel" id="t-telefono" required maxlength="20" inputmode="tel" placeholder="Ej: 341 256-2123" autocomplete="tel" />
+          </div>
+          <div>
+            <label for="t-sede">Sede <span class="req">*</span></label>
+            <select id="t-sede" required>
+              <option value="rosario">Rosario</option>
+              <option value="vgg">V. G. Gálvez</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="t-fecha">Fecha <span class="req">*</span></label>
+            <input type="date" id="t-fecha" required />
+          </div>
+          <div>
+            <label for="t-hora">Hora <span class="req">*</span></label>
+            <input type="time" id="t-hora" required />
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="t-duracion">Duración (min)</label>
+            <input type="number" id="t-duracion" min="10" max="240" step="5" value="30" />
+          </div>
+          <div>
+            <label for="t-servicio">Tratamiento</label>
+            <select id="t-servicio">
+              <option value="">— Seleccionar —</option>
+              <option>Consulta y diagnóstico</option>
+              <option>Limpieza y prevención</option>
+              <option>Carillas dentales</option>
+              <option>Blanqueamiento dental</option>
+              <option>Endodoncia</option>
+              <option>Ortodoncia</option>
+              <option>Implantes dentales</option>
+              <option>Rehabilitación oral</option>
+              <option>Urgencias</option>
+              <option>Periodoncia</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="t-source">Origen</label>
+            <select id="t-source">
+              <option value="manual">Manual</option>
+              <option value="online">Online (web)</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="telefono">Teléfono</option>
+            </select>
+          </div>
+          <div>
+            <label for="t-status">Estado</label>
+            <select id="t-status">
+              <option value="pending">Pendiente</option>
+              <option value="confirmed">Confirmado</option>
+              <option value="done">Realizado</option>
+              <option value="cancelled">Cancelado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="t-notas">Notas</label>
+          <textarea id="t-notas" rows="3" maxlength="500" placeholder="Observaciones, motivo, antecedentes…"></textarea>
+        </div>
+
+        <div class="modal-error" id="modalError" style="display:none;"></div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn ghost" id="modalDeleteBtn" style="display:none;">Eliminar</button>
+          <div style="flex:1;"></div>
+          <button type="button" class="btn ghost" id="modalCancelBtn">Cancelar</button>
+          <button type="submit" class="btn primary" id="modalSaveBtn">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ─────────── TOAST ─────────── -->
+  <div class="admin-toast" id="adminToast" role="status" aria-live="polite"></div>
+
+  <script src="admin.js" defer></script>
+</body>
+</html>

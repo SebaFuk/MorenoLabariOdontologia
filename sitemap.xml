@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemaps-image/1.1">
 
   <url>
     <loc>https://odontologiamorenolabari.com.ar/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://odontologiamorenolabari.com.ar/img/LabariOdontologia.webp</image:loc>
+      <image:title>Odontología Moreno Labari — Rosario y Villa Gobernador Gálvez</image:title>
+      <image:caption>Consultorio odontológico en Rosario y Villa Gobernador Gálvez, Santa Fe.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://odontologiamorenolabari.com.ar/img/consultorio.webp</image:loc>
+      <image:title>Sede Rosario — Blvd. Oroño 168bis</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://odontologiamorenolabari.com.ar/img/vgg-exterior.webp</image:loc>
+      <image:title>Sede Villa Gobernador Gálvez — Alberdi 2313</image:title>
+    </image:image>
   </url>
 
   <url>
     <loc>https://odontologiamorenolabari.com.ar/ortodoncia-rosario.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://odontologiamorenolabari.com.ar/implantes-dentales-rosario.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://odontologiamorenolabari.com.ar/urgencias-odontologicas-rosario.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://odontologiamorenolabari.com.ar/endodoncia-rosario.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>

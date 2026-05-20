@@ -1,7 +1,54 @@
-# robots.txt — Moreno Labari Odontología
+# robots.txt — Odontología Moreno Labari
 
 User-agent: *
 Allow: /
 Disallow: /ODONTOFOTOS/
+Disallow: /admin.html
+Disallow: /admin.css
+Disallow: /admin.js
+Disallow: /supabase-config.js
+
+# AI / LLM crawlers (permitidos — queremos aparecer en respuestas de IA)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
 
 Sitemap: https://odontologiamorenolabari.com.ar/sitemap.xml

@@ -3,75 +3,102 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página no encontrada — Moreno Labari Odontología</title>
+  <title>Página no encontrada — Odontología Moreno Labari</title>
+  <meta name="theme-color" content="#FCFAF6" />
   <meta name="robots" content="noindex" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
 
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="stylesheet" href="styles.css" />
 
   <style>
     .page404 {
-      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 24px;
+      padding: 80px 24px;
+      position: relative;
+      z-index: 1;
     }
+    .page404-eyebrow {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--coral);
+      font-weight: 600;
+      margin-bottom: 24px;
+      position: relative;
+      padding: 0 36px;
+    }
+    .page404-eyebrow::before, .page404-eyebrow::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 24px; height: 1px;
+      background: var(--coral);
+    }
+    .page404-eyebrow::before { left: 0; }
+    .page404-eyebrow::after { right: 0; }
     .page404-code {
-      font-family: var(--font-head);
-      font-size: clamp(80px, 18vw, 160px);
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: clamp(120px, 24vw, 240px);
+      font-weight: 400;
       line-height: 1;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--ink);
+      letter-spacing: -.04em;
+      font-variation-settings: "opsz" 144;
       margin-bottom: 16px;
+      position: relative;
     }
-    .page404-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
+    .page404-code em {
+      color: var(--coral);
+      font-weight: 600;
     }
     .page404-title {
-      font-family: var(--font-head);
-      font-size: clamp(22px, 5vw, 32px);
-      color: var(--text);
-      margin-bottom: 12px;
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 38px);
+      color: var(--ink);
+      margin-bottom: 16px;
+      font-weight: 400;
+      letter-spacing: -.01em;
     }
     .page404-desc {
       color: var(--muted);
-      font-size: 15px;
-      max-width: 400px;
-      margin: 0 auto 32px;
+      font-size: 17px;
+      max-width: 480px;
+      margin: 0 auto 40px;
       line-height: 1.6;
     }
     .page404-actions {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
       justify-content: center;
+    }
+    .page404-rule {
+      width: 60px; height: 1px;
+      background: var(--coral);
+      margin: 0 auto 30px;
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-orb bg-orb-1"></div>
-  <div class="bg-orb bg-orb-2"></div>
-
   <div class="page404">
-    <div class="page404-icon">🦷</div>
-    <div class="page404-code">404</div>
-    <h1 class="page404-title">Esta página no existe</h1>
-    <p class="page404-desc">Parece que el enlace que seguiste ya no está disponible o fue movido. No te preocupes, podés volver al inicio.</p>
+    <div class="page404-eyebrow">Error</div>
+    <div class="page404-code">4<em>0</em>4</div>
+    <div class="page404-rule"></div>
+    <h1 class="page404-title">Esta página no existe.</h1>
+    <p class="page404-desc">El enlace que seguiste ya no está disponible o fue movido. Podés volver al inicio o coordinar un turno por WhatsApp.</p>
     <div class="page404-actions">
       <a class="btn primary" href="index.html">Volver al inicio</a>
-      <a class="btn" href="index.html#turnos">Pedir un turno</a>
+      <a class="btn ghost" href="https://wa.me/5493412562123" target="_blank" rel="noopener noreferrer">Pedir un turno</a>
     </div>
   </div>
 

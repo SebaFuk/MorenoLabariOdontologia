@@ -3,68 +3,151 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Política de Privacidad | Moreno Labari Odontología</title>
+  <title>Política de Privacidad | Odontología Moreno Labari</title>
+  <meta name="theme-color" content="#FCFAF6" />
   <meta name="robots" content="noindex, follow" />
   <link rel="icon" href="favicon.ico" sizes="any">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="styles.css" />
+
   <style>
-    .privacyWrap { max-width: 740px; margin: 0 auto; padding: 40px 24px 80px; }
-    .privacyWrap h1 { font-size: clamp(24px,3vw,34px); margin-bottom: 8px; }
-    .privacyWrap h2 { font-family: var(--font-head); font-size: 18px; font-weight: 600; color: var(--gold); margin: 32px 0 10px; }
-    .privacyWrap p, .privacyWrap li { color: var(--muted2); font-size: 15px; line-height: 1.75; }
-    .privacyWrap ul { padding-left: 20px; margin: 8px 0; }
-    .privacyWrap a { color: var(--gold); }
-    .privBack { display: inline-flex; align-items: center; gap: 8px; color: var(--muted2); font-size: 14px; margin-bottom: 32px; transition: color .2s; }
-    .privBack:hover { color: var(--text); }
-    .privDate { font-size: 13px; color: var(--muted); margin-bottom: 36px; }
-    hr { border: none; border-top: 1px solid var(--border2); margin: 32px 0; }
+    .privacyWrap h2 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 44px 0 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .privacyWrap h2 span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--coral-tint);
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .privacyWrap p, .privacyWrap li {
+      color: var(--ink-2);
+      font-size: 16px;
+      line-height: 1.75;
+      opacity: .9;
+    }
+    .privacyWrap ul { padding-left: 22px; margin: 12px 0; }
+    .privacyWrap li { margin-bottom: 6px; }
+    .privacyWrap a { color: var(--sage); border-bottom: 1px solid transparent; transition: border-color .25s; font-weight: 600; }
+    .privacyWrap a:hover { border-color: var(--sage); }
+    .privDate {
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-weight: 600;
+    }
+    .privacyWrap hr { border: none; border-top: 1px solid var(--line); margin: 40px 0 20px; }
   </style>
 </head>
 <body>
-  <div class="bg-orb bg-orb-1"></div>
-  <div class="bg-orb bg-orb-2"></div>
+  <header class="topbar scrolled">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Odontología Moreno Labari — inicio">
+        <img class="logoImg" src="img/logo_new.webp" alt="Odontología Moreno Labari" width="48" height="48" />
+        <div>
+          <div class="brandName">Odontología Moreno Labari</div>
+          <div class="brandSub">Odontología — Santa Fe</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="index.html#sedes">Sedes</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+      <div class="navCtas desktopOnly">
+        <a class="btn primary" href="https://wa.me/5493412562123" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </div>
+  </header>
 
-  <div class="privacyWrap">
-    <a href="index.html" class="privBack">← Volver al inicio</a>
-    <h1>Política de Privacidad</h1>
-    <p class="privDate">Última actualización: enero de 2026</p>
+  <main>
+    <div class="subpage-wrap privacyWrap">
 
-    <p>En <strong>Moreno Labari Odontología</strong> nos comprometemos a proteger la privacidad de nuestros pacientes y visitantes. Esta política explica qué información recopilamos, cómo la usamos y qué derechos tenés sobre ella.</p>
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="index.html">Inicio</a>
+        <span>/</span>
+        <span aria-current="page">Política de Privacidad</span>
+      </nav>
 
-    <h2>1. Responsable del tratamiento</h2>
-    <p>Moreno Labari Odontología, con sedes en Blvd. Oroño 168bis (Rosario) y Alberdi 2313 (Villa Gobernador Gálvez), Santa Fe, Argentina. Matrícula provincial 2461/02 y 2443/02.</p>
-    <!-- TODO: Agregar email de contacto cuando disponible -->
+      <span class="subpage-eyebrow">Documento legal</span>
+      <h1 class="subpage-h1">Política de <em>privacidad</em>.</h1>
+      <p class="privDate">Última actualización · Enero 2026</p>
 
-    <h2>2. Información que recopilamos</h2>
-    <ul>
-      <li><strong>Datos de contacto por WhatsApp:</strong> nombre, consulta y número de teléfono, cuando el usuario inicia la conversación voluntariamente.</li>
-      <li><strong>Datos de navegación anónimos:</strong> si se utiliza Google Analytics u otra herramienta de medición, se recopilan datos de navegación anonimizados (páginas visitadas, tiempo de sesión, dispositivo). No identificamos al usuario individualmente.</li>
-      <li>No utilizamos formularios de contacto que almacenen datos en servidores propios.</li>
-    </ul>
+      <p class="subpage-lead">
+        En <strong>Odontología Moreno Labari</strong> nos comprometemos a proteger la privacidad de nuestros pacientes y visitantes. Esta política explica qué información recopilamos, cómo la usamos y qué derechos tenés sobre ella.
+      </p>
 
-    <h2>3. Finalidad del tratamiento</h2>
-    <ul>
-      <li>Coordinar turnos y consultas odontológicas.</li>
-      <li>Responder consultas enviadas voluntariamente por WhatsApp.</li>
-      <li>Mejorar la experiencia de navegación del sitio web (datos anónimos).</li>
-    </ul>
+      <h2><span>01</span>Responsable del tratamiento</h2>
+      <p>Odontología Moreno Labari, con sedes en Blvd. Oroño 168bis (Rosario) y Alberdi 2313 (Villa Gobernador Gálvez), Santa Fe, Argentina. Matrícula provincial 2461/02 y 2443/02.</p>
 
-    <h2>4. Almacenamiento y seguridad</h2>
-    <p>Los datos de contacto compartidos por WhatsApp son gestionados a través de WhatsApp Business y están sujetos a la <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">Política de Privacidad de WhatsApp</a>. No los compartimos con terceros no relacionados con la atención médica.</p>
+      <h2><span>02</span>Información que recopilamos</h2>
+      <ul>
+        <li><strong>Datos de contacto por WhatsApp:</strong> nombre, consulta y número de teléfono, cuando el usuario inicia la conversación voluntariamente.</li>
+        <li><strong>Datos de navegación anónimos:</strong> si se utiliza Google Analytics u otra herramienta de medición, se recopilan datos de navegación anonimizados (páginas visitadas, tiempo de sesión, dispositivo). No identificamos al usuario individualmente.</li>
+        <li><strong>Solicitudes de turno online:</strong> nombre, apellido, telÃ©fono, sede, fecha/horario preferido, tratamiento y notas opcionales. Estos datos se guardan en Supabase para gestionar la agenda.</li>
+      </ul>
 
-    <h2>5. Derechos del usuario</h2>
-    <p>Tenés derecho a acceder, rectificar o solicitar la eliminación de tus datos personales. Para ejercer estos derechos, comunicate con nosotros directamente por WhatsApp.</p>
+      <h2><span>03</span>Finalidad del tratamiento</h2>
+      <ul>
+        <li>Coordinar turnos y consultas odontológicas.</li>
+        <li>Responder consultas enviadas voluntariamente por WhatsApp.</li>
+        <li>Mejorar la experiencia de navegación del sitio web (datos anónimos).</li>
+      </ul>
 
-    <h2>6. Cookies</h2>
-    <p>Este sitio puede utilizar cookies técnicas necesarias para su funcionamiento y, opcionalmente, cookies analíticas de Google Analytics para medir el tráfico de forma anónima. Podés configurar tu navegador para rechazar cookies en cualquier momento.</p>
+      <h2><span>04</span>Almacenamiento y seguridad</h2>
+      <p>Las solicitudes realizadas desde el formulario online se almacenan en Supabase con controles de acceso para uso interno de agenda.</p>
+      <p>Los datos de contacto compartidos por WhatsApp son gestionados a través de WhatsApp Business y están sujetos a la <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">Política de Privacidad de WhatsApp</a>. No los compartimos con terceros no relacionados con la atención médica.</p>
 
-    <h2>7. Cambios en esta política</h2>
-    <p>Podemos actualizar esta política periódicamente. Los cambios se publicarán en esta página con la fecha de última actualización.</p>
+      <h2><span>05</span>Derechos del usuario</h2>
+      <p>Tenés derecho a acceder, rectificar o solicitar la eliminación de tus datos personales. Para ejercer estos derechos, comunicate con nosotros directamente por WhatsApp.</p>
 
-    <hr>
-    <p style="font-size:13px;">Para consultas sobre privacidad, escribinos por <a data-wa href="#">WhatsApp</a>.</p>
-  </div>
+      <h2><span>06</span>Cookies</h2>
+      <p>Este sitio puede utilizar cookies técnicas necesarias para su funcionamiento y, opcionalmente, cookies analíticas de Google Analytics para medir el tráfico de forma anónima. Podés configurar tu navegador para rechazar cookies en cualquier momento.</p>
 
-  <script src="script.js"></script>
+      <h2><span>07</span>Cambios en esta política</h2>
+      <p>Podemos actualizar esta política periódicamente. Los cambios se publicarán en esta página con la fecha de última actualización.</p>
+
+      <hr>
+      <p style="font-size:14px; color:var(--muted);">Para consultas sobre privacidad, escribinos por <a data-wa href="#">WhatsApp</a>.</p>
+
+      <p style="text-align:center; margin-top:40px;">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footerBottom" style="padding-top:30px; border-top:none;">
+        <div>© 2026 Odontología Moreno Labari · Rosario, Santa Fe</div>
+        <div class="footerBottomRight">
+          <a href="index.html" class="footerLink">Inicio</a>
+          <span style="opacity:.3;">·</span>
+          <span style="opacity:.5;">Mat. Prov. 2461/02 · 2443/02</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
