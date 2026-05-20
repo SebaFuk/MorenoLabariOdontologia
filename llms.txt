@@ -66,9 +66,6 @@ Sí. Múltiples obras sociales y atención particular. Consultar cobertura por W
 ### ¿Atienden niños?
 Sí. Indicar edad y motivo de consulta para coordinar el mejor horario.
 
-### ¿Qué incluye la primera consulta?
-Evaluación clínica, diagnóstico y opciones de tratamiento. Si hace falta, se indican estudios complementarios.
-
 ### ¿Hacen presupuesto antes de comenzar?
 Sí. Después de la evaluación se presenta el plan de tratamiento con opciones y costos.
 
