@@ -510,6 +510,8 @@
     $('#modalDeleteBtn').addEventListener('click', deleteTurno);
     $('#turnoForm').addEventListener('submit', saveFromForm);
     $('#exportCsvBtn').addEventListener('click', exportCsv);
+    $('#googleBtn').addEventListener('click', connectGoogle);
+    updateGoogleStatus();
     $('#logoutBtn').addEventListener('click', async () => {
       await sb.auth.signOut();
       location.reload();
@@ -517,6 +519,44 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && $('#turnoModal').style.display !== 'none') closeModal();
     });
+  }
+
+  // ---- Google Calendar sync ----
+  const GOOGLE_OAUTH_URL = 'https://gnjmtmoyefxdirrxvtqt.supabase.co/functions/v1/google-oauth';
+
+  async function connectGoogle() {
+    try {
+      const { data } = await sb.auth.getSession();
+      const token = data && data.session && data.session.access_token;
+      if (!token) { toast('Sesión expirada. Volvé a entrar.', 'error'); return; }
+      const res = await fetch(`${GOOGLE_OAUTH_URL}?action=start`, {
+        headers: { Authorization: 'Bearer ' + token }
+      });
+      if (!res.ok) { toast('No autorizado para conectar Google.', 'error'); return; }
+      const { authUrl } = await res.json();
+      window.open(authUrl, '_blank', 'noopener');
+      toast('Conectá tu cuenta en la pestaña nueva.', 'success');
+      setTimeout(updateGoogleStatus, 8000);
+    } catch (_) {
+      toast('Error iniciando conexión con Google.', 'error');
+    }
+  }
+
+  async function updateGoogleStatus() {
+    const btn = $('#googleBtn');
+    if (!btn) return;
+    try {
+      const { data } = await sb.from('google_integration').select('connected_email').eq('id', 1).maybeSingle();
+      if (data && data.connected_email) {
+        btn.textContent = '📅 Google: ' + data.connected_email;
+        btn.title = 'Google Calendar conectado. Clic para reconectar.';
+        btn.classList.add('is-connected');
+      } else {
+        btn.textContent = '📅 Conectar Google';
+        btn.title = 'Conectar Google Calendar';
+        btn.classList.remove('is-connected');
+      }
+    } catch (_) { /* sin permiso o sin conexión: dejar texto default */ }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
