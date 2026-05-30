@@ -546,10 +546,15 @@
     const btn = $('#googleBtn');
     if (!btn) return;
     try {
-      const { data } = await sb.from('google_integration').select('connected_email').eq('id', 1).maybeSingle();
-      if (data && data.connected_email) {
-        btn.textContent = '📅 Google: ' + data.connected_email;
-        btn.title = 'Google Calendar conectado. Clic para reconectar.';
+      const { data } = await sb.from('google_integration').select('connected_email');
+      const emails = (data || []).map(r => r.connected_email).filter(Boolean);
+      if (emails.length === 1) {
+        btn.textContent = '📅 Google: ' + emails[0];
+        btn.title = 'Google Calendar conectado. Clic para conectar otra cuenta o reconectar.';
+        btn.classList.add('is-connected');
+      } else if (emails.length > 1) {
+        btn.textContent = '📅 Google: ' + emails.length + ' cuentas';
+        btn.title = 'Conectadas: ' + emails.join(', ') + '. Clic para conectar/reconectar.';
         btn.classList.add('is-connected');
       } else {
         btn.textContent = '📅 Conectar Google';
